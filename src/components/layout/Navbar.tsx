@@ -22,7 +22,6 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
-import Image from "next/image";
 import { ModeToggle } from "./ModeToggle";
 
 interface MenuItem {
@@ -142,7 +141,7 @@ const Navbar = ({
                                         <a
                                             href={logo.url}
                                             className="flex items-center gap-2">
-                                            <Image
+                                            <img
                                                 src={logo.src}
                                                 className="max-h-8 dark:invert"
                                                 alt={logo.alt}
