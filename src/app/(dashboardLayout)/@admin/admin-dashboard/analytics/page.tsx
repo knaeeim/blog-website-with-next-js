@@ -1,10 +1,9 @@
 import React from 'react';
 
-
 const AnalyticsPage = () => {
     return (
         <div>
-            <h1>This is Analytics Page</h1>
+            <h1>Analytics Page</h1>
         </div>
     );
 };
