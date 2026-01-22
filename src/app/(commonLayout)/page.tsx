@@ -3,8 +3,12 @@ import { blogServices } from "@/services/blog.service";
 import { BlogPost } from "@/types";
 
 export default async function Home() {
-    const { data, error } = await blogServices.getBlogPosts({ isFeatured: true, search: ""} ,{
-        cache: "no-store"});
+    const { data, error } = await blogServices.getBlogPosts(
+        { search: "" },
+        {
+            cache: "no-store",
+        },
+    );
 
     if (error || !data) {
         return (
