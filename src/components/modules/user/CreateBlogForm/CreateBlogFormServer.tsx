@@ -10,7 +10,6 @@ import {
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Divide } from "lucide-react";
 
 export default function CreateBlogFormServer() {
     const createBlog = async (formData: FormData) => {

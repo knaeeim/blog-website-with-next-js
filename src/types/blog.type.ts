@@ -20,3 +20,9 @@ export interface BlogPost {
         comments : number;
     };
 }
+
+export interface BlogData {
+    title: string;
+    content: string;
+    tags: string[];
+}
