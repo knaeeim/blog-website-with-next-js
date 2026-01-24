@@ -8,22 +8,26 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import {
-    SidebarInset,
-    SidebarProvider,
-    SidebarTrigger,
-} from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Roles } from "@/constants/roles";
+import { userServices } from "@/services/user.service";
+import { CloudFog } from "lucide-react";
 import { ReactNode } from "react";
 
-export default function DashboardLayout({admin, user} : {children : ReactNode, admin: ReactNode, user: ReactNode}) {
-
-    const userInfo = {
-        role : "user"
-    }
+export default async function DashboardLayout({
+    admin,
+    user,
+}: {
+    children: ReactNode;
+    admin: ReactNode;
+    user: ReactNode;
+}) {
+    const { data } = await userServices.getSession();
+    const userInfo = data.user;
 
     return (
         <SidebarProvider>
-            <AppSidebar user={userInfo}/>
+            <AppSidebar user={userInfo} />
             <SidebarInset>
                 <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                     <SidebarTrigger className="-ml-1" />
@@ -46,7 +50,7 @@ export default function DashboardLayout({admin, user} : {children : ReactNode, a
                     </Breadcrumb>
                 </header>
                 <div className="flex flex-1 flex-col gap-4 p-4">
-                    {userInfo.role === "admin" ? admin : user}
+                    {userInfo.role === Roles.admin ? admin : user}
                 </div>
             </SidebarInset>
         </SidebarProvider>

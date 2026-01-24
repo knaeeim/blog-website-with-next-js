@@ -31,9 +31,9 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
                 callbackURL: "http://localhost:3000",
             });
 
-            toast.success("✅ Login successful!", { id: toastId });
+            toast.success("Login successful!", { id: toastId });
         } catch (error) {
-            toast.error("❌ Login error: " + (error instanceof Error ? error.message : "Unknown error"), { id: toastId });
+            toast.error("Login error: " + (error instanceof Error ? error.message : "Unknown error"), { id: toastId });
         }
     };
 
@@ -47,23 +47,23 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
             onChange: formSchema,
         },
         onSubmit: async ({ value }) => {
-            const toastId = toast.loading("🔵 Registering your account...");
+            const toastId = toast.loading("Registering your account...");
             try {
                 // sending request to the better auth for registration with user data
                 const { data, error } = await authClient.signUp.email(value);
                 // If there is an error while registration
                 if (error) {
                     // To pass to toastId is important to update the existing toast
-                    toast.error("❌ Registration error: " + error.message, { id: toastId });
+                    toast.error("Registration error: " + error.message, { id: toastId });
                     return;
                 }
                 // If the user register successfully
-                toast.success("✅ Registration successful!", { id: toastId });
+                toast.success("Registration successful!", { id: toastId });
             } catch (error: unknown) {
                 if (error instanceof Error) {
-                    toast.error("❌ Registration error:" + error.message, { id: toastId });
+                    toast.error("Registration error:" + error.message, { id: toastId });
                 }
-                toast.error("❌ An unknown error occurred during registration.", {
+                toast.error("An unknown error occurred during registration.", {
                     id: toastId,
                 });
             }
