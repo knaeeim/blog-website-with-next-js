@@ -33,6 +33,7 @@ export default function CreateBlogFormClient() {
             tags: "",
         },
         onSubmit: async ({ value }) => {
+            const toastId = toast.loading("Creating Blog Post...");
             const tags = value.tags
                 .split(",")
                 .map((tag) => tag.trim())
@@ -45,11 +46,11 @@ export default function CreateBlogFormClient() {
 
             const res = await createBlogPost(blogData);
 
-            if(res.error){
-                toast.error(`Error: ${res.error.message}`);
+            if (res.error) {
+                toast.error(`Error: ${res.error.message}`, { id: toastId });
                 return;
             }
-            toast.success("Blog Post Created Successfully!");
+            toast.success("Blog Post Created Successfully!", { id: toastId });
         },
         validators: {
             onChange: PostFormSchema,

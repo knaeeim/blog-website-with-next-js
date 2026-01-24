@@ -37,6 +37,8 @@ export const blogServices = {
                 config.next = { revalidate: option.revalidate }
             }
 
+            config.next = { ...config.next, tags: ['blogPosts']}
+
             const response = await fetch(url.toString(), config);
 
             const data = await response.json();
